@@ -1,6 +1,8 @@
 # fd-megaphones
 
-This is a simple optimized FiveM megaphone script, this adds a handheld megaphone, a vehicle megaphone and static megaphones to objects which are specified in the config file.
+This is a simple optimized FiveM megaphone script, which adds a handheld megaphone, a vehicle megaphone and static megaphones to objects which are specified in the config file.
+
+This script alters the voice range and adds a megaphone effect.
 
 For support just join our [Discord](https://discord.gg/VV6vX2EYW7).
 
