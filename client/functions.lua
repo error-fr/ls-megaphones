@@ -139,7 +139,7 @@ RegisterNetEvent('fd-megaphones:client:addsubmix', function(id)
 	SetAudioSubmixEffectParamFloat(megaphoneEffectId, 1, GetHashKey('o_freq_hi'), 5000.0)
 	AddAudioSubmixOutput(megaphoneEffectId, 1)
 
-    	MumbleSetSubmixForServerId(id, megaphoneEffectId)
+    MumbleSetSubmixForServerId(id, megaphoneEffectId)
 
 	debug('[Submix] Changing Submix For ID: ' .. id ..' | Megaphone')
 end)
