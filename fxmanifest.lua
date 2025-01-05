@@ -5,7 +5,7 @@ name 'fd-megaphones'
 author 'pen'
 description 'A simple free megaphone resource for FiveM'
 repository 'https://github.com/FD-Scripts/fd-megaphones'
-version '1.0.0'
+version '1.0.1'
 lua54 'yes'
 
 shared_scripts {
