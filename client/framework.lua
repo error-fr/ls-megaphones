@@ -5,7 +5,7 @@ if Config.framework == 'none' then
         megaphoneEnabled = not megaphoneEnabled
         toggleMegaphone('handHeld', megaphoneEnabled)
     end)
-elseif Config.framework == 'qb' or 'qbox' then
+elseif Config.framework == 'qb' or 'qbox' or 'esx' then
     RegisterNetEvent('fd-megaphones:client:usemegaphone', function()
         megaphoneEnabled = not megaphoneEnabled
         toggleMegaphone('handHeld', megaphoneEnabled)

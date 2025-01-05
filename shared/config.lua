@@ -10,7 +10,7 @@ Config = {
     },
     specifyVehicles = false,        -- If false it will default to all vehicles under the emergency class
     vehicles = { "washington" },    -- If the above is true, these will be the only vehicles which have a vehicle megaphone.
-    framework = 'none',             -- none / qb / qbox
+    framework = 'none',             -- none / qb / qbox / esx
     keybind = 'F12',                -- Default keybind for vehicle megaphone
     debug = false,                  -- Enables printing of basic debug info / polys
 }

@@ -16,4 +16,14 @@ elseif Config.framework == 'qbox' then
             TriggerClientEvent('fd-megaphones:client:usemegaphone', source)
         end
     end)  
+elseif Config.framework == 'esx' then
+    ESX = exports["es_extended"]:getSharedObject()
+
+    ESX.RegisterUsableItem('bread', function(playerId)
+        local xPlayer = ESX.GetPlayerFromId(playerId)
+
+        if xPlayer then
+            TriggerClientEvent('fd-megaphones:client:usemegaphone', playerId)
+        end
+    end)
 end
