@@ -43,3 +43,24 @@ Add to your ox_inventory/data/items.lua
     description = "A usable megaphone"
 },
 ```
+
+To use qb-target replace client/microphones.lua with the below code
+
+```lua
+local models = Config.models
+
+Citizen.CreateThread(function()
+    exports['qb-target']:AddTargetModel(models, { 
+    options = { 
+        { 
+            icon = 'fa-solid fa-microphone', 
+            label = 'Use Microphone', 
+            action = function(entity)
+                createMicPoly(GetEntityModel(entity))
+            end,
+        }
+    },
+    distance = 1,
+    })
+end)
+```
