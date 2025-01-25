@@ -11,12 +11,20 @@ function toggleMegaphone(micType, status)
     if proximity and status then
         setProximity(proximity)
         MumbleSetAudioInputIntent(`music`)
+
+        if Config.volume ~= -1.0 then
+            MumbleSetVolumeOverrideByServerId( srcSrv, Config.volume )
+        end
+        
         notify('Megaphone Enabled')
         TriggerServerEvent('fd-megaphones:server:addsubmix', srcSrv)
     else
         exports["pma-voice"]:clearProximityOverride()
         MumbleSetAudioInputIntent(`speech`)
         notify('Megaphone Disabled')
+        if Config.volume ~= -1.0 then
+            MumbleSetVolumeOverrideByServerId( srcSrv, -1.0 )
+        end
         TriggerServerEvent('fd-megaphones:server:removesubmix', srcSrv)
         debug('[Megaphone] Proximity reset to default')
     end

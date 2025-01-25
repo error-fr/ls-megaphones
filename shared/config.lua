@@ -8,6 +8,7 @@ Config = {
         `v_club_roc_micstd`, 
         `prop_table_mic_01` 
     },
+    volume = -1.0,                  -- A value between 0.0 and 1.0. -1 for the default volume.
     specifyVehicles = false,        -- If false it will default to all vehicles under the emergency class
     vehicles = { "washington" },    -- If the above is true, these will be the only vehicles which have a vehicle megaphone.
     framework = 'none',             -- none / qb / qbox / esx
