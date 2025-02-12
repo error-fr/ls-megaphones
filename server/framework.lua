@@ -19,7 +19,7 @@ elseif Config.framework == 'qbox' then
 elseif Config.framework == 'esx' then
     ESX = exports["es_extended"]:getSharedObject()
 
-    ESX.RegisterUsableItem('bread', function(playerId)
+    ESX.RegisterUsableItem('megaphone', function(playerId)
         local xPlayer = ESX.GetPlayerFromId(playerId)
 
         if xPlayer then
