@@ -29,13 +29,6 @@ end
 
 local megaphoneEnabled = false
 
-RegisterCommand("+vehmega", function()
-    if isPlayerInVehicle() and isAllowedVehicle() then
-        megaphoneEnabled = not megaphoneEnabled
-        toggleMegaphone("vehicle", megaphoneEnabled) 
-    end
-end)
-
 CreateThread(function()
     while true do
         Wait(1000)
@@ -46,4 +39,11 @@ CreateThread(function()
     end
 end)
 
-RegisterKeyMapping('+vehmega', '(Voice) Vehicle Megaphone', 'keyboard', Config.keybind)
+RegisterCommand("vehmega", function()
+    if isPlayerInVehicle() and isAllowedVehicle() then
+        megaphoneEnabled = not megaphoneEnabled
+        toggleMegaphone("vehicle", megaphoneEnabled) 
+    end
+end)
+
+RegisterKeyMapping('vehmega', '(Voice) Vehicle Megaphone', 'keyboard', Config.keybind)
