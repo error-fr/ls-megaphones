@@ -34,29 +34,6 @@ function toggleMegaphone(micType, status)
     end
 end
 
---[[function createMicPoly(model)
-    local playerCoords = GetEntityCoords(PlayerPedId())
-    local micEntity = GetClosestObjectOfType(playerCoords.x, playerCoords.y, playerCoords.z, 20.0, model, false, false, false)
-
-    if micEntity == 0 then
-        printDebug('[Error] Microphone object not found nearby.')
-        return
-    end
-
-    local coords = GetEntityCoords(micEntity)
-    local micZone = BoxZone:Create(coords, 2.0, 1.0, {
-        name = 'Microphone',
-        debugPoly = Config.debug,
-        heading = GetEntityHeading(PlayerPedId()),
-        minZ = coords.z - 2.0,
-        maxZ = coords.z + 2.0,
-    })
-
-    micZone:onPlayerInOut(function(isPointInside, _)
-        handleMicInteraction(isPointInside, micZone)
-    end)
-end]]--
-
 function createMicPoly(model)
     local ped = PlayerPedId()
     local pCoords = GetEntityCoords(ped)
