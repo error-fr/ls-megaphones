@@ -5,7 +5,7 @@ name 'fd-megaphones'
 author 'pen'
 description 'A simple free megaphone resource for FiveM'
 repository 'https://github.com/FD-Scripts/fd-megaphones'
-version '1.0.4'
+version '1.0.5'
 lua54 'yes'
 
 shared_scripts {
@@ -14,8 +14,6 @@ shared_scripts {
 }
 
 client_scripts {
-    '@PolyZone/client.lua',
-    '@PolyZone/BoxZone.lua',
     'client/framework.lua',
     'client/functions.lua',
     'client/megaphone.lua',
@@ -30,6 +28,5 @@ server_scripts {
 dependencies {
     'ox_lib',
     'ox_target',
-    'pma-voice',
-    'PolyZone'
+    'pma-voice'
 }
