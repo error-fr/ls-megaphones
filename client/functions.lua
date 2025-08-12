@@ -1,6 +1,6 @@
 function setProximity(distance)
     exports["pma-voice"]:overrideProximityRange(distance, true)
-    debug('[Proximity] Changed To ' .. distance)
+    printDebug('[Proximity] Changed To ' .. distance)
 end
 
 function toggleMegaphone(micType, status)
@@ -26,7 +26,7 @@ function toggleMegaphone(micType, status)
             MumbleSetVolumeOverrideByServerId( srcSrv, -1.0 )
         end
         TriggerServerEvent('fd-megaphones:server:removesubmix', srcSrv)
-        debug('[Megaphone] Proximity reset to default')
+        printDebug('[Megaphone] Proximity reset to default')
     end
 
     if micType == 'handHeld' then
@@ -35,26 +35,27 @@ function toggleMegaphone(micType, status)
 end
 
 function createMicPoly(model)
-    local playerCoords = GetEntityCoords(PlayerPedId())
-    local micEntity = GetClosestObjectOfType(playerCoords.x, playerCoords.y, playerCoords.z, 20.0, model, false, false, false)
-
+    local ped = PlayerPedId()
+    local pCoords = GetEntityCoords(ped)
+    local micEntity = GetClosestObjectOfType(pCoords.x, pCoords.y, pCoords.z, 20.0, model, false, false, false)
     if micEntity == 0 then
-        debug('[Error] Microphone object not found nearby.')
+        printDebug('[Error] Microphone object not found nearby.')
         return
     end
 
     local coords = GetEntityCoords(micEntity)
-    local micZone = BoxZone:Create(coords, 2.0, 1.0, {
-        name = 'Microphone',
-        debugPoly = Config.debug,
-        heading = GetEntityHeading(PlayerPedId()),
-        minZ = coords.z - 2.0,
-        maxZ = coords.z + 2.0,
+    local micZone = lib.zones.box({
+        coords = vec3(coords.x, coords.y, coords.z),
+        size = vec3(1.5, 1.0, 4.0),
+        rotation = GetEntityHeading(micEntity),
+        onEnter = function(micZone) 
+            handleMicInteraction(true, micZone)
+        end,
+        onExit = function(micZone)
+            handleMicInteraction(false, micZone)
+        end,
+        debug = Config.debug
     })
-
-    micZone:onPlayerInOut(function(isPointInside, _)
-        handleMicInteraction(isPointInside, micZone)
-    end)
 end
 
 function handleMicInteraction(isPointInside, micZone)
@@ -62,13 +63,9 @@ function handleMicInteraction(isPointInside, micZone)
 
     if isPointInside then
         toggleMegaphone('stage', true)
-        TriggerServerEvent('fd-megaphones:server:addsubmix', srcSrv)
-        notify('Microphone Enabled')
     else
         toggleMegaphone('stage', false)
-        TriggerServerEvent('fd-megaphones:server:removesubmix', srcSrv)
-        notify('Microphone Disabled')
-        micZone:destroy()
+        micZone:remove()
     end
 end
 
@@ -149,16 +146,16 @@ RegisterNetEvent('fd-megaphones:client:addsubmix', function(id)
 
     MumbleSetSubmixForServerId(id, megaphoneEffectId)
 
-	debug('[Submix] Changing Submix For ID: ' .. id ..' | Megaphone')
+	printDebug('[Submix] Changing Submix For ID: ' .. id ..' | Megaphone')
 end)
 
 RegisterNetEvent('fd-megaphones:client:removesubmix', function(id)
 	MumbleSetSubmixForServerId(id, -1)
 
-	debug('[Submix] Changing Submix For ID: ' .. id ..' | Default')
+	printDebug('[Submix] Changing Submix For ID: ' .. id ..' | Default')
 end)
 
-function debug(text)
+function printDebug(text)
     if not Config.debug then return end
     print(text)
 end

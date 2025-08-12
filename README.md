@@ -12,7 +12,6 @@ For support just join our [Discord](https://discord.gg/VV6vX2EYW7).
 - [ox_lib](https://github.com/overextended/ox_lib)
 - [ox_target](https://github.com/overextended/ox_target)
 - [pma-voice](https://github.com/AvarianKnight/pma-voice)
-- [PolyZone](https://github.com/mkafrin/PolyZone)
 
 # Installation - Standalone
 1. Download latest release
