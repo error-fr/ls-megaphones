@@ -26,4 +26,8 @@ elseif Config.framework == 'esx' then
             TriggerClientEvent('fd-megaphones:client:usemegaphone', playerId)
         end
     end)
+elseif Config.framework == 'none' then
+    print("[fd-megaphones] set to not use microphone as an item")
+else
+    print("[fd-megaphones] invalid Config.Framework value: " .. tostring(Config.framework))
 end
