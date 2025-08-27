@@ -20,12 +20,15 @@ local function isAllowedVehicle()
         end
     else
         local vehicleClass = GetVehicleClass(vehicle)
-        if vehicleClass == 18 then
-            return true
+        for _, allowedClass in ipairs(Config.vehicleClass) do
+            if vehicleClass == allowedClass then
+                return true
+            end
         end
     end
     return false
 end
+
 
 local megaphoneEnabled = false
 
