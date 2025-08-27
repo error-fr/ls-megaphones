@@ -16,12 +16,15 @@ function toggleMegaphone(micType, status)
             MumbleSetVolumeOverrideByServerId( srcSrv, Config.volume )
         end
         
-        notify('Megaphone Enabled')
-        TriggerServerEvent('fd-megaphones:server:addsubmix', srcSrv)
+        notify('Mégaphone sortie')
+
+        if micType ~= 'stage' then
+            TriggerServerEvent('fd-megaphones:server:addsubmix', srcSrv)
+        end
     else
         exports["pma-voice"]:clearProximityOverride()
         MumbleSetAudioInputIntent(`speech`)
-        notify('Megaphone Disabled')
+        notify('Mégaphone rangé')
         if Config.volume ~= -1.0 then
             MumbleSetVolumeOverrideByServerId( srcSrv, -1.0 )
         end

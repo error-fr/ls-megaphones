@@ -5,7 +5,7 @@ Citizen.CreateThread(function()
         {
             name = 'ox:option9',
             icon = 'fa-solid fa-microphone',
-            label = 'Use Microphone',
+            label = 'Utiliser le micro',
             distance = 1,
             onSelect = function(data)
                 createMicPoly(GetEntityModel(data.entity))

@@ -12,8 +12,8 @@ Config = {
     specifyVehicles = false,        -- If false it will use the vehicleClass value below
     vehicleClass = {18, 15},        -- If above is set to false it will only apply to these vehicle class
     vehicles = { "washington" },    -- If specifyVehicles is true, these will be the only vehicles which have a vehicle megaphone.
-    framework = 'none',             -- none / qb / qbox / esx
-    keybind = 'F12',                -- Default keybind for vehicle megaphone
+    framework = 'qbox',             -- none / qb / qbox / esx
+    keybind = 'K',                  -- Default keybind for vehicle megaphone
     debug = false,                  -- Enables printing of basic debug info / polys
 }
 
